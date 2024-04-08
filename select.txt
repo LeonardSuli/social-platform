@@ -18,11 +18,23 @@ WHERE `likes`.`post_id` IS NULL;
 
 -----------------------------------------------------------------------
 
-3. Conta il numero di like per ogni post (165)
+3. Conta il numero di like per ogni post (152 o 165)
 
-SELECT `likes`.`post_id`, COUNT(*) AS 'tot_likes' 
-FROM `likes`
-GROUP BY `likes`.`post_id`;
+(152 risultati non contando i 0 likes)
+
+SELECT `posts`.`id`, `posts`.`title`, COUNT(`likes`.`post_id`) AS 'tot_likes'
+FROM `posts`
+JOIN `likes` ON `likes`.`post_id` = `posts`.`id`
+GROUP BY `posts`.`id`;
+
+
+(165 risultati contanto anche i 0 likes)
+
+SELECT `posts`.`id`, `posts`.`title`, COUNT(`likes`.`post_id`) AS 'tot_likes'
+FROM `posts`
+LEFT JOIN `likes` ON `likes`.`post_id` = `posts`.`id`
+GROUP BY `posts`.`id`;
+
 
 -----------------------------------------------------------------------
 
