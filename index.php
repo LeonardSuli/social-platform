@@ -19,14 +19,51 @@ if ($connection && $connection->connect_error) {
     die;
 }
 
-// Execute the query
-$sql = "SELECT `users`.`username`, COUNT(*) AS 'tot_video'
-FROM `medias`
-JOIN `users` ON `users`.`id` = `medias`.`user_id`
-WHERE `medias`.`type` = 'video'
-GROUP BY `users`.`username`;";
 
-$result = $connection->query($sql);
+
+
+
+// Execute the query
+// $sql = "SELECT `users`.`username`, COUNT(*) AS 'tot_video'
+// FROM `medias`
+// JOIN `users` ON `users`.`id` = `medias`.`user_id`
+// WHERE `medias`.`type` = 'video'
+// GROUP BY `users`.`username`;";
+
+// $result = $connection->query($sql);
+
+var_dump(empty($_POST['name']));
+var_dump($_POST);
+
+if (empty($_POST['name'])) {
+
+    // Execute the query
+    $sql = "SELECT `users`.`username`, COUNT(*) AS 'tot_video'
+    FROM `medias`
+    JOIN `users` ON `users`.`id` = `medias`.`user_id`
+    WHERE `medias`.`type` = 'video'
+    -- AND `users`.`username` = 'Luca%'
+    GROUP BY `users`.`username`;";
+
+    $result = $connection->query($sql);
+} else {
+
+    // var_dump('filterrr');
+
+    $name = $_POST['name'];
+
+    // Execute the query
+    $sql = "SELECT `users`.`username`, COUNT(*) AS 'tot_video'
+    FROM `medias`
+    JOIN `users` ON `users`.`id` = `medias`.`user_id`
+    WHERE `medias`.`type` = 'video'
+    AND `users`.`username` = '" . $name . "'
+    GROUP BY `users`.`username`;";
+
+    // var_dump($sql);
+
+    $result = $connection->query($sql);
+}
 
 ?>
 
@@ -47,6 +84,7 @@ $result = $connection->query($sql);
     <form action="" method="post" class="mb-5">
         <input type="text" name="name" id="name" placeholder="Search...">
         <button class="btn btn-primary" type="submit">Search</button>
+        <a href="index.php">Reset</a>
     </form>
 
     <!-- Loop over the results -->
@@ -54,7 +92,6 @@ $result = $connection->query($sql);
 
         // array destructuring
         ['username' => $username, 'tot_video' => $tot_video] = $row; ?>
-
 
 
         <!-- <?php var_dump($username, $tot_video); ?> -->
@@ -66,6 +103,12 @@ $result = $connection->query($sql);
 
 
     <?php endwhile; ?>
+
+    <?php if ($result->num_rows === 0) : ?>
+
+        <p>No resuts found</p>
+
+    <?php endif ?>
 
 
 </body>
