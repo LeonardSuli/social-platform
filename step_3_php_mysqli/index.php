@@ -50,7 +50,6 @@ if (!empty($_POST['name'])) {
     $result = $stmt->get_result();
 }
 
-
 $connection->close();
 ?>
 
@@ -72,8 +71,11 @@ $connection->close();
 
         <div class="container-sm my-5">
 
-            <form action="" method="post" class="border py-3 my-5">
-                <input type="text" name="name" id="name" placeholder="Search...">
+            <h3>Inserisci il nome di un'utente per sapere quanti video ha postato</h3>
+
+            <!-- Form with method post -->
+            <form action="" method="post" class="border border-primary bg-primary-subtle py-5 my-5" style="margin: 0 350px;">
+                <input type="text" name="name" id="name" placeholder="Search a user...">
                 <button class="btn btn-primary" type="submit">Search</button>
                 <a href="index.php" class="text-decoration-none">Reset</a>
             </form>
@@ -84,29 +86,25 @@ $connection->close();
                 // array destructuring
                 ['username' => $username, 'tot_video' => $tot_video] = $row; ?>
 
-
-                <!-- <?php var_dump($username, $tot_video); ?> -->
-
-                <div>
-                    <span><?php echo $username ?></span>
-                    <span><?php echo $tot_video ?></span>
+                <div class="py-2">
+                    <span><strong><?php echo $username ?></strong></span>
+                    <span>ha postato</span>
+                    <span><strong><?php echo $tot_video ?></strong></span>
+                    <span>video</span>
                 </div>
-
 
             <?php endwhile; ?>
 
             <!-- Condition if there isn't a result -->
             <?php if ($result->num_rows === 0) : ?>
 
-                <p class="text-danger"><strong>No resuts found</strong></p>
+                <p class="text-danger"><strong>No results found</strong></p>
 
             <?php endif ?>
 
         </div>
 
     </main>
-
-
 
 </body>
 
