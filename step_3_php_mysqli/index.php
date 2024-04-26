@@ -32,24 +32,30 @@ if (!empty($_POST['name'])) {
         JOIN `users` ON `users`.`id` = `medias`.`user_id`
         WHERE `medias`.`type` = 'video'
         AND `users`.`username` LIKE ?
-        GROUP BY `users`.`username`";
+        GROUP BY `users`.`username`;";
 
     // Prepare the statement
-    $stmt = $connection->prepare($sql);
+    if ($stmt = $connection->prepare($sql)) {
 
-    // Bind the username parameter
-    $stmt->bind_param("s", $username);
+        // Bind the username parameter
+        $stmt->bind_param("s", $username);
 
-    // Set parameter
-    $username = "%$name%";
+        // Set & execute the parameter
+        $username = "%$name%";
+        $stmt->execute();
 
-    // Execute the prepared statement
-    $stmt->execute();
+        // Get the result
+        $result = $stmt->get_result();
+    } else {
 
-    // Get the result
-    $result = $stmt->get_result();
+        echo "Error preparing statement: " . $connection->error;
+    }
+
+    // Close statement
+    $stmt->close();
 }
 
+// Close connection
 $connection->close();
 ?>
 
@@ -83,9 +89,10 @@ $connection->close();
             <!-- Loop over the results -->
             <?php while ($row = $result->fetch_assoc()) :
 
-                // array destructuring
+                // Array destructuring
                 ['username' => $username, 'tot_video' => $tot_video] = $row; ?>
 
+                <!-- Results get from DB -->
                 <div class="py-2">
                     <span><strong><?php echo $username ?></strong></span>
                     <span>ha postato</span>
