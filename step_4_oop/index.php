@@ -1,84 +1,8 @@
 <?php
 
-// Class declaration
-
-/**
- * ### Class Post
- * 
- * @author Leonard Suli
- * @license MIT
- * @copyright 2024 Leonard Suli
- */
-class Post
-{
-    public $id;
-    public $author;
-    public $title;
-    public $date;
-
-    /**
-     * Constructor for the Post class
-     * 
-     * @param Int @id The post id
-     * @param String @author The post author
-     * @param String @title The post title
-     * @param String @date The post date
-     * 
-     */
-    public function __construct($id, $author, $title, $date)
-    {
-        $this->id = $id;
-        $this->author = $author;
-        $this->title = $title;
-        $this->date = $date;
-    }
-
-    // Getter for $id
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    // Getter for $author
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    // Getter for $title
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    // Getter for $date
-    public function getDate()
-    {
-        return $this->date;
-    }
-}
-
-
-$post_1 = new Post(1, 'Mario Rossi', 'Finalmente si parte! Destinazione vacanze', '22-11-2022');
-// var_dump($post_1);
-
-$post_2 = new Post(2, 'Mario Rossi', 'Una giornata di sole sulla spiaggia', '15-09-2022');
-// var_dump($post_1);
-
-
-
-$posts = [$post_1, $post_2];
-
-// var_dump($posts);
-
+require_once __DIR__ . '/database/db.php';
 
 ?>
-
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -93,12 +17,12 @@ $posts = [$post_1, $post_2];
 </head>
 
 <body>
-    <header class="bg-dark text-white d-flex">
+    <header class="position-fixed w-100 bg-dark text-white d-flex z-1">
 
         <div class="container-medium d-flex justify-content-between align-items-center">
 
             <div>
-                <img class="logo my-3" src="./logo.png" alt="">
+                <img class="logo my-2" src="./images/logo.png" alt="">
             </div>
 
             <nav class="nav d-flex nowrap">
@@ -111,11 +35,11 @@ $posts = [$post_1, $post_2];
 
     </header>
 
-    <main class="mt-5">
+    <main class="bg-body-secondary">
 
         <section>
             <div class="container-medium">
-                <div class="row row-cols-1 g-3">
+                <div class="row row-cols-1 g-5">
 
                     <?php foreach ($posts as $post) : ?>
 
@@ -123,7 +47,7 @@ $posts = [$post_1, $post_2];
 
                             <div class="card">
 
-                                <div class="card-body">
+                                <div class="card-header text-white bg-primary">
                                     <h3><?= $post->title ?></h3>
 
                                     <div>
@@ -138,11 +62,32 @@ $posts = [$post_1, $post_2];
 
                                 </div>
 
-                                <div class="card-footer">
-                                    <ul class="d-flex gap-1 list-unstyled">
+                                <div class="card-body bg-primary-subtle">
 
+                                    <div class="row">
 
-                                    </ul>
+                                        <?php foreach ($post->medias as $media) : ?>
+
+                                            <div class="col-6">
+
+                                                <?php if (str_contains($media->path, '.mp4')) : ?>
+
+                                                    <video width="320" height="240" controls>
+                                                        <source src="<?= $media->path ?>" type="video/mp4">
+                                                    </video>
+
+                                                <?php else : ?>
+
+                                                    <img src="<?= $media->path ?>" alt="">
+
+                                                <?php endif; ?>
+
+                                            </div>
+
+                                        <?php endforeach; ?>
+
+                                    </div>
+
                                 </div>
 
                             </div>
