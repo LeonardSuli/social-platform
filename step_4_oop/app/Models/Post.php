@@ -11,11 +11,6 @@
  */
 class Post
 {
-    public $id;
-    public $author;
-    public $title;
-    public $date;
-    public $medias;
 
     /**
      * Constructor for the Post class
@@ -27,7 +22,7 @@ class Post
      * @param Array @medias The post medias
      * 
      */
-    public function __construct($id, $author, $title, $date, array $medias)
+    public function __construct(public int $id, public string $author, public string $title, public string $date, public array $medias)
     {
         $this->id = $id;
         $this->author = $author;

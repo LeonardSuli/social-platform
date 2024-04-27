@@ -11,9 +11,6 @@
  */
 class Media
 {
-    public $id;
-    public $type;
-    public $path;
 
     /**
      * Constructor for the Media class
@@ -23,7 +20,7 @@ class Media
      * @param String @path The media path
      * 
      */
-    public function __construct($id, $type, $path)
+    public function __construct(public int $id, public string $type, public string $path)
     {
         $this->id = $id;
         $this->type = $type;
