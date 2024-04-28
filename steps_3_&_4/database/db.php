@@ -13,7 +13,7 @@ $posts = [
         [
             new Media(1, 'photo', 'https://picsum.photos/400/300'),
             new Media(1, 'photo', 'https://picsum.photos/400/250'),
-            new Media(1, 'video', './images/video.mp4'),
+            new Media(1, 'video', './assets/img/video.mp4'),
             new Media(1, 'photo', 'https://picsum.photos/600/400')
         ]
     ),
@@ -25,7 +25,7 @@ $posts = [
         '15-09-2022',
         [
             new Media(1, 'photo', 'https://picsum.photos/400/300'),
-            new Media(1, 'video', './images/video.mp4'),
+            new Media(1, 'video', './assets/img/video.mp4'),
             new Media(1, 'photo', 'https://picsum.photos/600/300')
         ]
     ),
@@ -36,7 +36,7 @@ $posts = [
         'Una serata divertente al karaoke',
         '10-07-2022',
         [
-            new Media(1, 'video', './images/video.mp4'),
+            new Media(1, 'video', './assets/img/video.mp4'),
             new Media(1, 'photo', 'https://picsum.photos/500/300'),
             new Media(1, 'photo', 'https://picsum.photos/400/300')
         ]
