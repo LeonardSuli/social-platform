@@ -66,8 +66,4 @@ $posts = [
         ]
     ),
 
-
-
 ];
-
-// var_dump($posts);

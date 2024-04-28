@@ -4,5 +4,4 @@
         <p>Copyright &copy; by Social Platform</p>
     </div>
 
-
 </footer>

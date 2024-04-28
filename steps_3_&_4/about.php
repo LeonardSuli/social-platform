@@ -1,20 +1,18 @@
 <?php
 
-
-
-
+// Include head
 include_once __DIR__ . '/layouts/head.php';
 
 ?>
 
 
-
-
 <body>
 
+    <!-- Include header -->
     <?php include_once __DIR__ . '/layouts/header.php'; ?>
 
     <main class="bg-body-secondary min-vh-90">
+
         <div class="container-medium text-center">
 
             <h1 class="about">About</h1>
@@ -31,6 +29,7 @@ include_once __DIR__ . '/layouts/head.php';
 
     </main>
 
+    <!-- Include footer -->
     <?php include_once __DIR__ . '/layouts/footer.php'; ?>
 
 </body>
