@@ -1,23 +1,7 @@
 <?php
 
-// DATABASE CONNECTION
-
-// Define some constants
-define('DB_SERVERNAME', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_NAME', 'social_platform');
-
-// Create an instance of the new connection
-$connection = new mysqli(DB_SERVERNAME, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// Check if there is a connection error
-if ($connection && $connection->connect_error) {
-
-    echo "Connection failed: " . $connection->connect_error;
-
-    die;
-}
+// Include database connection
+include_once __DIR__ . '/database/db_connection.php';
 
 
 // Condition if the input is not empty
@@ -55,17 +39,19 @@ if (!empty($_POST['name'])) {
     $stmt->close();
 }
 
+
 // Close connection
 $connection->close();
 
 
+// Include head
 include_once __DIR__ . '/layouts/head.php';
 ?>
 
 <body>
 
+    <!-- Include header -->
     <?php include_once __DIR__ . '/layouts/header.php'; ?>
-
 
     <main class="text-center bg-body-secondary min-vh-100">
 
@@ -73,7 +59,7 @@ include_once __DIR__ . '/layouts/head.php';
 
             <h3>Inserisci il nome di un'utente per sapere quanti video ha postato</h3>
 
-            <!-- Form with method post -->
+            <!-- Form with post method -->
             <form action="" method="post" class="border border-primary bg-primary-subtle py-5 my-5" style="margin: 0 350px;">
                 <input type="text" name="name" id="name" placeholder="Search a user...">
                 <button class="btn btn-primary" type="submit">Search</button>
@@ -107,6 +93,7 @@ include_once __DIR__ . '/layouts/head.php';
 
     </main>
 
+    <!-- Include footer -->
     <?php include_once __DIR__ . '/layouts/footer.php'; ?>
 
 </body>
