@@ -2,40 +2,15 @@
 
 require_once __DIR__ . '/database/db.php';
 
+
+include_once __DIR__ . '/layouts/head.php';
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>php-oop-1</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
 <body>
-    <header class="position-fixed w-100 bg-dark text-white d-flex z-1">
 
-        <div class="container-medium d-flex justify-content-between align-items-center">
+    <?php include_once __DIR__ . '/layouts/header.php'; ?>
 
-            <div>
-                <img class="logo my-2" src="./assets/img/logo.png" alt="">
-            </div>
-
-            <nav class="nav d-flex nowrap">
-                <a class="nav-link" href="#" aria-current="page">Home</a>
-                <a class="nav-link" href="./about.php">About</a>
-                <a class="nav-link" href="./contacts.php">Contacts</a>
-            </nav>
-
-        </div>
-
-    </header>
-
-    <main class="bg-body-secondary">
+    <main class="bg-body-secondary min-vh-100">
 
         <section>
             <div class="container-medium">
@@ -101,6 +76,8 @@ require_once __DIR__ . '/database/db.php';
         </section>
 
     </main>
+
+    <?php include_once __DIR__ . '/layouts/footer.php'; ?>
 
 </body>
 

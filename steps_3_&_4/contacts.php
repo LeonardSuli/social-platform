@@ -57,23 +57,17 @@ if (!empty($_POST['name'])) {
 
 // Close connection
 $connection->close();
+
+
+include_once __DIR__ . '/layouts/head.php';
 ?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>step_3</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
 
 <body>
 
-    <main class="text-center">
+    <?php include_once __DIR__ . '/layouts/header.php'; ?>
+
+
+    <main class="text-center bg-body-secondary min-vh-100">
 
         <div class="container-sm my-5">
 
@@ -83,7 +77,7 @@ $connection->close();
             <form action="" method="post" class="border border-primary bg-primary-subtle py-5 my-5" style="margin: 0 350px;">
                 <input type="text" name="name" id="name" placeholder="Search a user...">
                 <button class="btn btn-primary" type="submit">Search</button>
-                <a href="index.php" class="text-decoration-none">Reset</a>
+                <a href="contacts.php" class="text-decoration-none">Reset</a>
             </form>
 
             <!-- Loop over the results -->
@@ -112,6 +106,8 @@ $connection->close();
         </div>
 
     </main>
+
+    <?php include_once __DIR__ . '/layouts/footer.php'; ?>
 
 </body>
 
