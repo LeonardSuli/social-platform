@@ -48,6 +48,7 @@ $connection->close();
 include_once __DIR__ . '/layouts/head.php';
 ?>
 
+
 <body>
 
     <!-- Include header -->
@@ -61,9 +62,11 @@ include_once __DIR__ . '/layouts/head.php';
 
             <!-- Form with post method -->
             <form action="" method="post" class="border border-primary bg-primary-subtle py-5 my-5" style="margin: 0 350px;">
+
                 <input type="text" name="name" id="name" placeholder="Search a user...">
                 <button class="btn btn-primary" type="submit">Search</button>
                 <a href="contacts.php" class="text-decoration-none">Reset</a>
+
             </form>
 
             <!-- Loop over the results -->
@@ -74,10 +77,12 @@ include_once __DIR__ . '/layouts/head.php';
 
                 <!-- Results get from DB -->
                 <div class="py-2">
+
                     <span><strong><?php echo $username ?></strong></span>
                     <span>ha postato</span>
                     <span><strong><?php echo $tot_video ?></strong></span>
                     <span>video</span>
+
                 </div>
 
             <?php endwhile; ?>

@@ -6,6 +6,7 @@ require_once __DIR__ . '/database/db.php';
 include_once __DIR__ . '/layouts/head.php';
 ?>
 
+
 <body>
 
     <!-- Include header -->
@@ -76,7 +77,9 @@ include_once __DIR__ . '/layouts/head.php';
                     <?php endforeach; ?>
 
                 </div>
+
             </div>
+
         </section>
 
     </main>
