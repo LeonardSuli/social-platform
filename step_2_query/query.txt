@@ -43,7 +43,9 @@ SELECT `users`.`id`, `users`.`username`, COUNT(*) AS 'tot_media_caricati'
 FROM `medias`
 JOIN `users` ON `medias`.`user_id` = `users`.`id`
 GROUP BY `users`.`id`
-ORDER BY `tot_media_caricati`;
+ORDER BY `tot_media_caricati`
+
+having 'tot_media_caricati' > 5;
 
 -----------------------------------------------------------------------
 
